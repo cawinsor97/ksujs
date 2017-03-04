@@ -5,10 +5,8 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-	<h1>0</h1>
-	<h2>wildcats</h2>
-<div>
-	<button id="decrease"> - </button>
+	<img src="http://www.fillmurray.com/500/400">
+		<button id="decrease"> - </button>
 	<button id="increase"> + </button>
 </div>
 	
@@ -16,19 +14,20 @@
 
 	<script type="text/javascript">
 
-	var wildcat = 0;
+	var address = "http://www.fillmurray.com/500/";
+	var picIndex = 400;
 
 	$('button').click(function(){
 
 		if($(this).attr('id')==='increase'){
-			wildcat = wildcat + 1;
+			picIndex = picIndex + 1;
 		} else {
-			wildcat = wildcat - 1;
+			picIndex = picIndex - 1;
 		}
-		$('h1').text(wildcat);
+		$('img').attr("src", address + picIndex);
 	});
 	
-	console.log(wildcat);	
+	console.log(picIndex);	
 		
 	
 
