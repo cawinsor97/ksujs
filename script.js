@@ -6,28 +6,28 @@ var dataset = [
 	{name: "Chris", score: 63 },
 ];
 
-// d3.select('body').selectAll('div')
-// 	.data(dataset)
-// 	.enter()
-// 	.append('div')
-// 	.attr('class','bar')
-// 	.style('height', function(d){
-//  		return d * 5 + 'px';
-// 	});
-
-d3.select('.chart')
+var bar = d3.select('.chart')
 
 	.append('svg')
 		.attr('width', 225)
 		.attr('height', 300)
+	.selectAll('rg')
+	.data(dataset)
+	.enter()
+		.append('g')
+		.attr('transform', (d, i) => 'translate(0, ' + i * 33 + ')');
 
-.selectAll('rect')
-.data(dataset)
-.enter()
-	.append('rect')
-	.attr('y', (d, i) => i * 33)
-	.style('width', d => d.score)
-	.text(function(d){
-		return d.name;
-	})
-	.attr('class','bar');
+	bar.append('rect')
+		.style('width', d => d.score)
+		.text(function(d) {
+			return d.name;
+		})
+		.attr('class', 'bar');
+
+	bar.append('text')
+		.attr('y', 20)
+		.attr('x', 5)
+		.text (function(d){
+			return d.name;
+		})
+		.attr('class', 'name');
